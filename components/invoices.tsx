@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
+import data from '../public/data.json'
+import InvoiceRow from '@/components/invoice-row';
 
 const InvoiceContainer = styled.div`
   min-height: 70vh;
@@ -20,6 +22,12 @@ const Bold = styled.span`
 
 const Invoices: FunctionComponent = () => {
   return (
+    data.length > 0 ?
+    <>
+      {
+        data.map((row) => <InvoiceRow key={row.id} id={row.id} dueDate={row.paymentDue} owner={row.clientName} amount={row.total} status={row.status}></InvoiceRow>)
+      }
+    </> :
     <InvoiceContainer>
       <Image src="/empty.svg" alt="Empty" width={241.34} height={200} />
       <h2>There is nothing here</h2>
