@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap');
+@import 'normalize.css/normalize.css';
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Spartan', sans-serif;
+  font-weight: 400;
 }
 
 a {
@@ -15,12 +18,64 @@ a {
   box-sizing: border-box;
 }
 
+h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: -0.63px;
+  margin: 0;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  margin: 0;
+}
+
+p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  margin: 0;
+}
+
+small {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: -0.23px;
+  margin: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: #fff;
+    background: #141625;
+  }
+
+  p, small {
+    color: #DFE3FA;
   }
 }
