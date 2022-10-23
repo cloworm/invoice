@@ -3,19 +3,32 @@ import styled from 'styled-components';
 import FormattedDate from '@/components/formatted-date';
 import FormattedCurrency from '@/components/formatted-currency';
 import StatusBadge from '@/components/status-badge';
+import Image from 'next/image'
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4px;
   align-items: center;
   background-color: #1E2139;
-  padding: 32px 28px;
+  padding: 0 28px;
+  height: 72px;
   border-radius: 8px;
   margin-bottom: 16px;
+  border: 1px solid transparent;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #7C5DFA;
+  }
 `
 
 const Hash = styled.span`
   color: #7E88C3;
+`
+
+const AmountColumn = styled.div`
+  text-align: right;
+  padding-right: 40px;
 `
 
 interface Props {
@@ -50,13 +63,16 @@ const InvoiceRow: FunctionComponent<Props> = ({
           {owner}
         </p>
       </div>
-      <div>
+      <AmountColumn>
         <h3>
           <FormattedCurrency currency={amount} />
         </h3>
-      </div>
+      </AmountColumn>
       <div>
         <StatusBadge status={status} />
+      </div>
+      <div>
+        <Image src="/icon-arrow-right.svg" alt="Arrow Right" width={4} height={8} />
       </div>
     </Row>
   )
