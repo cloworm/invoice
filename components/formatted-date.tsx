@@ -7,7 +7,7 @@ interface Props {
 const FormattedDate: FunctionComponent<Props> = ({ date }) => {
   const formattedDate = new Intl.DateTimeFormat('en-GB', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(date))
   return (
-    <span>{formattedDate}</span>
+    <span data-testid="date">{formattedDate}</span>
   )
 }
 
