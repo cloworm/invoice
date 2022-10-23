@@ -1,16 +1,27 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components';
+import FormattedDate from '@/components/formatted-date';
+import FormattedCurrency from '@/components/formatted-currency';
 
 const Row = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background-color: #1E2139;
+  padding: 32px 28px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+`
+
+const Hash = styled.span`
+  color: #7E88C3;
 `
 
 interface Props {
-  id: String
-  dueDate: String
-  owner: String
+  id: string
+  dueDate: string
+  owner: string
   amount: number
-  status: String
+  status: string
 }
 
 const InvoiceRow: FunctionComponent<Props> = ({
@@ -22,10 +33,10 @@ const InvoiceRow: FunctionComponent<Props> = ({
 }) => {
   return (
     <Row>
-      <div>{id}</div>
-      <div>{dueDate}</div>
+      <div><Hash>#</Hash>{id}</div>
+      <div>Due <FormattedDate date={dueDate} /></div>
       <div>{owner}</div>
-      <div>{amount}</div>
+      <div><FormattedCurrency currency={amount} /></div>
       <div>{status}</div>
     </Row>
   )
