@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styled from 'styled-components';
 import React, { FunctionComponent } from 'react'
 import Invoices from '@/components/invoices';
+import Toolbar from '@/components/toolbar';
 
 const Wrapper = styled.div`
   padding: 72px 0;
@@ -23,6 +24,7 @@ const Home: FunctionComponent = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Toolbar />
         <Wrapper>
           <TitleContainer>
             <div>
