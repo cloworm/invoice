@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 `
 
 const Option = styled.label`
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding: 8px 0;
@@ -47,7 +48,6 @@ const Input = styled.input`
   border: 1px solid transparent;
   border-radius: 2px;
   background-color: #1E2139;
-  cursor: pointer;
 
   &:checked {
     border: 1px solid #7C5DFA;
@@ -55,13 +55,15 @@ const Input = styled.input`
   }
 
   &:checked + span::before {
-    content: 'x';
-    background-image: url('./icon-check.svg');
+    content: '';
+    background-image: url('icon-check.svg');
     display: block;
     text-align: center;
     position: absolute;
-    left: 4px;
-    top: 10px;
+    width: 10px;
+    height: 8px;
+    left: 3px;
+    top: 12px;
   }
 
   &:hover {
@@ -89,13 +91,7 @@ const DropdownLabel = styled.h4`
 
 const MultiselectDropdown: FunctionComponent<Props> = ({ options, label, onChange, selected }) => {
   const [show, setShow] = useState<boolean>(false)
-  const [dropdownOptions, setDropdownOptions] = useState([...options.map((option) => {
-    return {
-      value: option.toUpperCase(),
-      label: option,
-      isChecked: selected.includes(option)
-    }
-  })])
+
 
   const handleMouseEnter =  () => {
     setShow(true)
@@ -108,24 +104,17 @@ const MultiselectDropdown: FunctionComponent<Props> = ({ options, label, onChang
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target) return
 
-    const value = e.target.value
-
-    const newDropdownOptions = [...dropdownOptions.map((option) => {
-      if (option.value === value) {
-        option.isChecked = e.target.checked
-      }
-
-      return option
-    })]
+    const value = e.target.value.toUpperCase()
 
     let newSelectedOptions;
     if (e.target.checked) {
       newSelectedOptions = [...selected, value]
     } else {
-      newSelectedOptions = [...selected.filter((option) => option !== value)]
+      newSelectedOptions = [...selected.filter((option) => {
+        return option !== value
+      })]
     }
 
-    setDropdownOptions(newDropdownOptions)
     onChange(newSelectedOptions)
   }
 
@@ -137,11 +126,11 @@ const MultiselectDropdown: FunctionComponent<Props> = ({ options, label, onChang
         show ? 
         <OptionContainer>
           {
-            dropdownOptions.map((option) => {
+            options.map((option) => {
               return (
-                <Option key={option.value} htmlFor={option.value}>
-                  <Input type="checkbox" id={option.value} name={option.label} value={option.value} onChange={handleChange} checked={option.isChecked} />
-                  <Label>{option.label}</Label>
+                <Option key={option} htmlFor={option}>
+                  <Input type="checkbox" id={option} name={option} value={option} onChange={handleChange} checked={selected.includes(option.toUpperCase())} />
+                  <Label>{option}</Label>
                 </Option>
               )
             })

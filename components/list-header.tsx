@@ -17,6 +17,7 @@ const ListHeader: FunctionComponent = () => {
   const options = ['Draft', 'Pending', 'Paid']
 
   const handleSelect = (selected: string[]) => {
+    console.log('handleSelect', selected)
     dispatch({
       type: Actions.FILTER,
       payload: selected
