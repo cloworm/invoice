@@ -11,12 +11,12 @@ interface Invoice {
 
 interface State {
   invoices: Invoice[]
-  statusFilter: string|null
+  filter: string[]
 }
 
 const initialState: State = {
   invoices: [...data],
-  statusFilter: null
+  filter: []
 }
 
 export enum Actions {
@@ -25,15 +25,27 @@ export enum Actions {
 
 interface Action {
   type: Actions.FILTER
-  payload: string|null
+  payload: string[]
 }
 
 export const invoiceReducer = (state: State, action: Action): State => {
   switch(action.type) {
 
   case Actions.FILTER: {
+    let newInvoices: Invoice[] = [];
+
+    if (action.payload.length === 0) {
+      newInvoices = data
+    } else {
+      newInvoices = data.filter((row) => {
+        return action.payload.includes(row.status.toUpperCase())
+      })
+    }
+
     return {
-      ...state
+      ...state,
+      invoices: newInvoices,
+      filter: action.payload
     }
   }
 

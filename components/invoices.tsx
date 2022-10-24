@@ -27,7 +27,6 @@ const Bold = styled.span`
 
 const Invoices: FunctionComponent = () => {
   const { state: { invoices } } = useContext(InvoiceContext)
-  console.log('state set!!!', invoices)
 
   return (
     invoices.length > 0 ?

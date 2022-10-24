@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useState } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-
 interface Props {
+  label: string
   options: string[]
+  selected: string[]
+  onChange: (selected: string[]) => void
 }
 
 const Wrapper = styled.div`
@@ -85,8 +87,15 @@ const DropdownLabel = styled.h4`
   padding-right: 16px;
 `
 
-const MultiselectDropdown: FunctionComponent<Props> = ({ options }) => {
-  const [show, setShow] = useState(false)
+const MultiselectDropdown: FunctionComponent<Props> = ({ options, label, onChange, selected }) => {
+  const [show, setShow] = useState<boolean>(false)
+  const [dropdownOptions, setDropdownOptions] = useState([...options.map((option) => {
+    return {
+      value: option.toUpperCase(),
+      label: option,
+      isChecked: selected.includes(option)
+    }
+  })])
 
   const handleMouseEnter =  () => {
     setShow(true)
@@ -96,19 +105,43 @@ const MultiselectDropdown: FunctionComponent<Props> = ({ options }) => {
     setShow(false)
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target) return
+
+    const value = e.target.value
+
+    const newDropdownOptions = [...dropdownOptions.map((option) => {
+      if (option.value === value) {
+        option.isChecked = e.target.checked
+      }
+
+      return option
+    })]
+
+    let newSelectedOptions;
+    if (e.target.checked) {
+      newSelectedOptions = [...selected, value]
+    } else {
+      newSelectedOptions = [...selected.filter((option) => option !== value)]
+    }
+
+    setDropdownOptions(newDropdownOptions)
+    onChange(newSelectedOptions)
+  }
+
   return (
     <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <DropdownLabel>Filter by status</DropdownLabel>
+      <DropdownLabel>{label}</DropdownLabel>
       <Image src="/icon-arrow-down.svg" alt="Expand" layout="fixed" width={8.46} height={4.23} />
       {
         show ? 
         <OptionContainer>
           {
-            options.map((option) => {
+            dropdownOptions.map((option) => {
               return (
-                <Option key={option} htmlFor={option}>
-                  <Input type="checkbox" id={option} name={option} value={option} />
-                  <Label>{option}</Label>
+                <Option key={option.value} htmlFor={option.value}>
+                  <Input type="checkbox" id={option.value} name={option.label} value={option.value} onChange={handleChange} checked={option.isChecked} />
+                  <Label>{option.label}</Label>
                 </Option>
               )
             })

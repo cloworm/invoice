@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useContext } from 'react'
 import styled from 'styled-components';
-import { InvoiceContext } from '../state/invoice.state'
+import { InvoiceContext, Actions, Filter } from '../state/invoice.state'
 import MultiselectDropdown from '@/components/multiselect-dropdown';
 
 const HeaderContainer = styled.div`
@@ -9,12 +9,19 @@ const HeaderContainer = styled.div`
 `
 
 const Title = styled.h1`
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 `
 
 const ListHeader: FunctionComponent = () => {
-  const { state: { invoices } } = useContext(InvoiceContext)
+  const { state: { filter, invoices }, dispatch } = useContext(InvoiceContext)
   const options = ['Draft', 'Pending', 'Paid']
+
+  const handleSelect = (selected: Filter[]) => {
+    dispatch({
+      type: Actions.FILTER,
+      payload: selected
+    })
+  }
 
   return (
     <HeaderContainer>
@@ -25,7 +32,7 @@ const ListHeader: FunctionComponent = () => {
         </p>
       </div>
       <div>
-        <MultiselectDropdown options={options} />
+        <MultiselectDropdown label="Filter by status" options={options} onChange={handleSelect} selected={filter} />
       </div>
     </HeaderContainer>
   )
