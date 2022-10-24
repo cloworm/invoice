@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useContext } from 'react'
 import styled from 'styled-components';
-import { InvoiceContext, Actions, Filter } from '../state/invoice.state'
+import { InvoiceContext, Actions } from '../state/invoice.state'
 import MultiselectDropdown from '@/components/multiselect-dropdown';
 
 const HeaderContainer = styled.div`
@@ -9,7 +9,7 @@ const HeaderContainer = styled.div`
 `
 
 const Title = styled.h1`
-  margin-bottom: 16px;
+  padding-bottom: 8px;
 `
 
 const ListHeader: FunctionComponent = () => {
