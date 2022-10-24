@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components';
-import data from '../public/data.json'
 import InvoiceRow from '@/components/invoice-row';
+import { InvoiceContext } from '../state/invoice.state'
 
 const EmptyInvoiceContainer = styled.div`
   padding-top: 65px;
@@ -26,11 +26,14 @@ const Bold = styled.span`
 `
 
 const Invoices: FunctionComponent = () => {
+  const { state: { invoices } } = useContext(InvoiceContext)
+  console.log('state set!!!', invoices)
+
   return (
-    data.length > 0 ?
+    invoices.length > 0 ?
     <InvoiceContainer>
       {
-        data.map((row) => <InvoiceRow key={row.id} id={row.id} dueDate={row.paymentDue} owner={row.clientName} amount={row.total} status={row.status}></InvoiceRow>)
+        invoices.map((row) => <InvoiceRow key={row.id} id={row.id} dueDate={row.paymentDue} owner={row.clientName} amount={row.total} status={row.status}></InvoiceRow>)
       }
     </InvoiceContainer> :
     <EmptyInvoiceContainer>
