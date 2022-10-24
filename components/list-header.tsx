@@ -16,7 +16,7 @@ const ListHeader: FunctionComponent = () => {
   const { state: { filter, invoices }, dispatch } = useContext(InvoiceContext)
   const options = ['Draft', 'Pending', 'Paid']
 
-  const handleSelect = (selected: Filter[]) => {
+  const handleSelect = (selected: string[]) => {
     dispatch({
       type: Actions.FILTER,
       payload: selected
