@@ -32,7 +32,7 @@ export const invoiceReducer = (state: State, action: Action): State => {
   switch(action.type) {
 
   case Actions.FILTER: {
-    let newInvoices: Invoice[] = [];
+    let newInvoices: Invoice[] = []
 
     if (action.payload.length === 0) {
       newInvoices = data
@@ -65,8 +65,8 @@ export const InvoiceContext = createContext<Store>({
 })
 
 interface Props {
-  children: any
-} 
+  children: React.ReactNode;
+}
 
 export const InvoiceProvider: FunctionComponent<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(invoiceReducer, initialState)

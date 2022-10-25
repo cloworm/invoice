@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components';
-import FormattedDate from '@/components/formatted-date';
-import FormattedCurrency from '@/components/formatted-currency';
-import StatusBadge from '@/components/status-badge';
+import styled from 'styled-components'
+import FormattedDate from '@/components/formatted-date'
+import FormattedCurrency from '@/components/formatted-currency'
+import StatusBadge from '@/components/status-badge'
 import Image from 'next/image'
 
 const Row = styled.div`

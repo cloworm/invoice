@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import React, { FunctionComponent } from 'react'
-import Invoices from '@/components/invoices';
-import Toolbar from '@/components/toolbar';
+import Invoices from '@/components/invoices'
+import Toolbar from '@/components/toolbar'
 import ListHeader from '@/components/list-header'
 
 const Wrapper = styled.div`
