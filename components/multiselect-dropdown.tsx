@@ -119,7 +119,7 @@ const MultiselectDropdown: FunctionComponent<Props> = ({ options, label, onChang
   }
 
   return (
-    <Wrapper onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <Wrapper data-testid="multiselect-dropdown" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <DropdownLabel>{label}</DropdownLabel>
       <Image src="/icon-arrow-down.svg" alt="Expand" layout="fixed" width={8.46} height={4.23} />
       {
