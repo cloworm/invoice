@@ -8,7 +8,7 @@ const FormattedCurrency: FunctionComponent<Props> = ({ currency }) => {
   const formattedCurrency = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'GBP'
-  }).format(currency);
+  }).format(currency)
   return (
     <span data-testid="currency">{formattedCurrency}</span>
   )

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const ToolbarContainer = styled.div`
   display: flex;

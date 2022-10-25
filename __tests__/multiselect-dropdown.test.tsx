@@ -5,7 +5,8 @@ import MultiSelectDropdown from '@/components/multiselect-dropdown'
 it('Renders provided label', () => {
   const testLabel = 'Test Label'
   const options = ['Option A', 'Option B', 'Option C']
-  const callback = (selected: string[]) => {}
+  /* eslint-disable no-empty-function */
+  const callback = () => {}
   render(<MultiSelectDropdown label={testLabel} options={options} selected={[]} onChange={callback}  />)
 
   const label = screen.getByRole('heading', { level: 4 })
@@ -15,10 +16,10 @@ it('Renders provided label', () => {
 it('Renders provided label', () => {
   const testLabel = 'Test Label'
   const options = ['Option A', 'Option B', 'Option C']
-  const callback = (selected: string[]) => {}
+  const callback = () => {}
   render(<MultiSelectDropdown label={testLabel} options={options} selected={[]} onChange={callback}  />)
 
-  fireEvent.mouseOver(screen.getByTestId('multiselect-dropdown'));
+  fireEvent.mouseOver(screen.getByTestId('multiselect-dropdown'))
   const label = screen.getByLabelText('Option A')
   expect(label).toBeInTheDocument()
 })
@@ -27,10 +28,10 @@ it('Checked options set as selected', () => {
   const testLabel = 'Test Label'
   const options = ['Option A', 'Option B', 'Option C']
   const selected = ['OPTION B']
-  const callback = (selected: string[]) => {}
+  const callback = () => {}
   render(<MultiSelectDropdown label={testLabel} options={options} selected={selected} onChange={callback}  />)
 
-  fireEvent.mouseOver(screen.getByTestId('multiselect-dropdown'));
+  fireEvent.mouseOver(screen.getByTestId('multiselect-dropdown'))
   const checkboxA = screen.getByRole('checkbox', { name: 'Option A' })
   const checkboxB = screen.getByRole('checkbox', { name: 'Option B' })
   const checkboxC = screen.getByRole('checkbox', { name: 'Option C' })

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext } from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import { InvoiceContext, Actions } from '../state/invoice.state'
-import MultiselectDropdown from '@/components/multiselect-dropdown';
+import MultiselectDropdown from '@/components/multiselect-dropdown'
 
 const HeaderContainer = styled.div`
   display: flex;

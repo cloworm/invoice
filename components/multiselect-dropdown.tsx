@@ -106,7 +106,7 @@ const MultiselectDropdown: FunctionComponent<Props> = ({ options, label, onChang
 
     const value = e.target.value.toUpperCase()
 
-    let newSelectedOptions;
+    let newSelectedOptions
     if (e.target.checked) {
       newSelectedOptions = [...selected, value]
     } else {
@@ -124,19 +124,19 @@ const MultiselectDropdown: FunctionComponent<Props> = ({ options, label, onChang
       <Image src="/icon-arrow-down.svg" alt="Expand" layout="fixed" width={8.46} height={4.23} />
       {
         show ? 
-        <OptionContainer>
-          {
-            options.map((option) => {
-              return (
-                <Option key={option} htmlFor={option}>
-                  <Input type="checkbox" id={option} name={option} value={option} onChange={handleChange} checked={selected.includes(option.toUpperCase())} />
-                  <Label>{option}</Label>
-                </Option>
-              )
-            })
-          }
-        </OptionContainer> :
-        null
+          <OptionContainer>
+            {
+              options.map((option) => {
+                return (
+                  <Option key={option} htmlFor={option}>
+                    <Input type="checkbox" id={option} name={option} value={option} onChange={handleChange} checked={selected.includes(option.toUpperCase())} />
+                    <Label>{option}</Label>
+                  </Option>
+                )
+              })
+            }
+          </OptionContainer> :
+          null
       }
     </Wrapper>
   )

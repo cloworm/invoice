@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext } from 'react'
 import Image from 'next/image'
-import styled from 'styled-components';
-import InvoiceRow from '@/components/invoice-row';
+import styled from 'styled-components'
+import InvoiceRow from '@/components/invoice-row'
 import { InvoiceContext } from '../state/invoice.state'
 
 const EmptyInvoiceContainer = styled.div`
@@ -30,16 +30,16 @@ const Invoices: FunctionComponent = () => {
 
   return (
     invoices.length > 0 ?
-    <InvoiceContainer>
-      {
-        invoices.map((row) => <InvoiceRow key={row.id} id={row.id} dueDate={row.paymentDue} owner={row.clientName} amount={row.total} status={row.status}></InvoiceRow>)
-      }
-    </InvoiceContainer> :
-    <EmptyInvoiceContainer>
-      <Image src="/empty.svg" alt="Empty" width={241.34} height={200} />
-      <h2>There is nothing here</h2>
-      <p>Create an invoice by clicking the <Bold>New Invoice</Bold> button and get started</p>
-    </EmptyInvoiceContainer>
+      <InvoiceContainer>
+        {
+          invoices.map((row) => <InvoiceRow key={row.id} id={row.id} dueDate={row.paymentDue} owner={row.clientName} amount={row.total} status={row.status}></InvoiceRow>)
+        }
+      </InvoiceContainer> :
+      <EmptyInvoiceContainer>
+        <Image src="/empty.svg" alt="Empty" width={241.34} height={200} />
+        <h2>There is nothing here</h2>
+        <p>Create an invoice by clicking the <Bold>New Invoice</Bold> button and get started</p>
+      </EmptyInvoiceContainer>
   )
 }
 
