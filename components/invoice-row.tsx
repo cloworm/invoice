@@ -4,6 +4,7 @@ import FormattedDate from '@/components/formatted-date'
 import FormattedCurrency from '@/components/formatted-currency'
 import StatusBadge from '@/components/status-badge'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Row = styled.div`
   display: grid;
@@ -47,34 +48,36 @@ const InvoiceRow: FunctionComponent<Props> = ({
   status
 }) => {
   return (
-    <Row>
-      <div>
-        <h4>
-          <Hash>#</Hash>{id}
-        </h4>
-      </div>
-      <div>
-        <p>
-          Due <FormattedDate date={dueDate} />
-        </p>
-      </div>
-      <div>
-        <p>
-          {owner}
-        </p>
-      </div>
-      <AmountColumn>
-        <h3>
-          <FormattedCurrency currency={amount} />
-        </h3>
-      </AmountColumn>
-      <div>
-        <StatusBadge status={status} />
-      </div>
-      <div>
-        <Image src="/icon-arrow-right.svg" alt="Arrow Right" width={4} height={8} />
-      </div>
-    </Row>
+    <Link href={`/invoices/${id}`}>
+      <Row>
+        <div>
+          <h4>
+            <Hash>#</Hash>{id}
+          </h4>
+        </div>
+        <div>
+          <p>
+            Due <FormattedDate date={dueDate} />
+          </p>
+        </div>
+        <div>
+          <p>
+            {owner}
+          </p>
+        </div>
+        <AmountColumn>
+          <h3>
+            <FormattedCurrency currency={amount} />
+          </h3>
+        </AmountColumn>
+        <div>
+          <StatusBadge status={status} />
+        </div>
+        <div>
+          <Image src="/icon-arrow-right.svg" alt="Arrow Right" width={4} height={8} />
+        </div>
+      </Row>
+    </Link>
   )
 }
 
