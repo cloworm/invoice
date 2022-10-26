@@ -39,6 +39,10 @@ const Hash = styled.span`
   color: #888EB0;
 `
 
+const Id = styled.h3`
+  padding-bottom: 8px;
+`
+
 const Invoice: FunctionComponent = () => {
   const [invoice, setInvoice] = useState<Invoice>()
   const { state: { invoices } } = useContext(InvoiceContext)
@@ -66,7 +70,8 @@ const Invoice: FunctionComponent = () => {
         </ButtonsContainer>
       </Header>
       <Details>
-        <h3><Hash>#</Hash>{id}</h3>
+        <Id><Hash>#</Hash>{id}</Id>
+        <p><small>{invoice.description}</small></p>
       </Details>
     </div>
   )

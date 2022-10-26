@@ -7,6 +7,7 @@ export interface Invoice {
   clientName: string
   total: number
   status: string
+  description?: string
 }
 
 interface State {
