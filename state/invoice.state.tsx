@@ -1,12 +1,13 @@
 import React, { Dispatch, createContext, useReducer, FunctionComponent, useMemo } from 'react'
 import data from '../public/data.json'
 
-interface Invoice {
+export interface Invoice {
   id: string
   paymentDue: string
   clientName: string
   total: number
   status: string
+  description?: string
 }
 
 interface State {
