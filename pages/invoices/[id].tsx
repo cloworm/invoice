@@ -43,6 +43,11 @@ const Id = styled.h3`
   padding-bottom: 8px;
 `
 
+const FlexItemsSpaceBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 const Invoice: FunctionComponent = () => {
   const [invoice, setInvoice] = useState<Invoice>()
   const { state: { invoices } } = useContext(InvoiceContext)
@@ -70,8 +75,12 @@ const Invoice: FunctionComponent = () => {
         </ButtonsContainer>
       </Header>
       <Details>
-        <Id><Hash>#</Hash>{id}</Id>
-        <p><small>{invoice.description}</small></p>
+        <FlexItemsSpaceBetween>
+          <div>
+            <Id><Hash>#</Hash>{id}</Id>
+            <p><small>{invoice.description}</small></p>
+          </div>
+        </FlexItemsSpaceBetween>
       </Details>
     </div>
   )
