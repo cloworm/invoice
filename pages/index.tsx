@@ -1,15 +1,7 @@
 import Head from 'next/head'
-import styled from 'styled-components'
 import React, { FunctionComponent } from 'react'
 import Invoices from '@/components/invoices'
-import Toolbar from '@/components/toolbar'
 import ListHeader from '@/components/list-header'
-
-const Wrapper = styled.div`
-  padding: 72px 0;
-  max-width: 730px;
-  margin: 0 auto;
-`
 
 const Home: FunctionComponent = () => {
   return (
@@ -20,11 +12,8 @@ const Home: FunctionComponent = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Toolbar />
-        <Wrapper>
-          <ListHeader />
-          <Invoices />
-        </Wrapper>
+        <ListHeader />
+        <Invoices />
       </main>
     </div>
   )
