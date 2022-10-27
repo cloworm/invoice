@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import StatusBadge from '@/components/status-badge'
 import Button from '@/components/button'
 import { InvoiceContext, Invoice } from '../../state/invoice.state'
+import FormattedDate from '@/components/formatted-date'
 
 const Header = styled.div`
   background-color: #1E2139;
@@ -48,6 +49,45 @@ const FlexItemsSpaceBetween = styled.div`
   justify-content: space-between;
 `
 
+const Address = styled.div`
+  text-align: right;
+  padding-bottom: 21px;
+`
+
+const FieldLabel = styled.p`
+  padding-bottom: 12px;
+`
+
+const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const FieldValue = styled.h3`
+  padding-bottom: 8px;
+`
+
+const Field = styled.div`
+  padding-bottom: 24px;
+`
+
+const LineItemsGrid = styled.div`
+  background-color: #252945;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 32px;
+`
+
+const Row = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  padding: 16px;
+`
+
+const ColumnRight = styled.div`
+  text-align: right;
+`
+
 const Invoice: FunctionComponent = () => {
   const [invoice, setInvoice] = useState<Invoice>()
   const { state: { invoices } } = useContext(InvoiceContext)
@@ -80,7 +120,57 @@ const Invoice: FunctionComponent = () => {
             <Id><Hash>#</Hash>{id}</Id>
             <p><small>{invoice.description}</small></p>
           </div>
+          <Address>
+            <p><small>{invoice.senderAddress.street}</small></p>
+            <p><small>{invoice.senderAddress.city}</small></p>
+            <p><small>{invoice.senderAddress.postCode}</small></p>
+            <p><small>{invoice.senderAddress.country}</small></p>
+          </Address>
         </FlexItemsSpaceBetween>
+        <FlexItemsSpaceBetween>
+          <FlexColumn>
+            <Field>
+              <FieldLabel>Invoice Date</FieldLabel>
+              <FieldValue>
+                <FormattedDate date={invoice.createdAt} />
+              </FieldValue>
+            </Field>
+            <Field>
+              <FieldLabel>Payment Due</FieldLabel>
+              <FieldValue>
+                <FormattedDate date={invoice.paymentDue} />
+              </FieldValue>
+            </Field>
+          </FlexColumn>
+          <FlexColumn>
+            <FieldLabel>Bill To</FieldLabel>
+            <FieldValue>{invoice.clientName}</FieldValue>
+            <p><small>{invoice.clientAddress.street}</small></p>
+            <p><small>{invoice.clientAddress.city}</small></p>
+            <p><small>{invoice.clientAddress.postCode}</small></p>
+            <p><small>{invoice.clientAddress.country}</small></p>
+          </FlexColumn>
+          <FlexColumn>
+            <Field>
+              <FieldLabel>Sent to</FieldLabel>
+              <FieldValue>{invoice.clientEmail}</FieldValue>
+            </Field>
+          </FlexColumn>
+        </FlexItemsSpaceBetween>
+        <LineItemsGrid>
+          <Row>
+            <p><small>Item Name</small></p>
+            <ColumnRight>
+              <p><small>QTY.</small></p>
+            </ColumnRight>
+            <ColumnRight>
+              <p><small>Price</small></p>
+            </ColumnRight>
+            <ColumnRight>
+              <p><small>Total</small></p>
+            </ColumnRight>
+          </Row>
+        </LineItemsGrid>
       </Details>
     </div>
   )
