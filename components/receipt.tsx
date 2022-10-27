@@ -41,10 +41,6 @@ const Foot = styled(Row)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 32px;
-
-  td {
-    padding: 24px 32px;
-  }
 `
 
 const Receipt: FunctionComponent<Props> = ({ invoice }) => {
