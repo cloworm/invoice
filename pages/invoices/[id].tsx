@@ -5,6 +5,7 @@ import StatusBadge from '@/components/status-badge'
 import Button from '@/components/button'
 import { InvoiceContext, Invoice } from '../../state/invoice.state'
 import FormattedDate from '@/components/formatted-date'
+import Receipt from '@/components/receipt'
 
 const Header = styled.div`
   background-color: #1E2139;
@@ -69,23 +70,6 @@ const FieldValue = styled.h3`
 
 const Field = styled.div`
   padding-bottom: 24px;
-`
-
-const LineItemsGrid = styled.div`
-  background-color: #252945;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  padding: 32px;
-`
-
-const Row = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
-  padding: 16px;
-`
-
-const ColumnRight = styled.div`
-  text-align: right;
 `
 
 const Invoice: FunctionComponent = () => {
@@ -157,20 +141,7 @@ const Invoice: FunctionComponent = () => {
             </Field>
           </FlexColumn>
         </FlexItemsSpaceBetween>
-        <LineItemsGrid>
-          <Row>
-            <p><small>Item Name</small></p>
-            <ColumnRight>
-              <p><small>QTY.</small></p>
-            </ColumnRight>
-            <ColumnRight>
-              <p><small>Price</small></p>
-            </ColumnRight>
-            <ColumnRight>
-              <p><small>Total</small></p>
-            </ColumnRight>
-          </Row>
-        </LineItemsGrid>
+        <Receipt invoice={invoice} />
       </Details>
     </div>
   )
