@@ -6,6 +6,7 @@ import Button from '@/components/button'
 import { InvoiceContext, Invoice } from '../../state/invoice.state'
 import FormattedDate from '@/components/formatted-date'
 import Receipt from '@/components/receipt'
+import Back from '@/components/back'
 
 const Header = styled.div`
   background-color: #1E2139;
@@ -87,6 +88,7 @@ const Invoice: FunctionComponent = () => {
 
   return (
     <div>
+      <Back />
       <Header>
         <FlexItemsCenter>
           <StatusLabel>Status</StatusLabel>
