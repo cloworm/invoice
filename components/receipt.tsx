@@ -85,10 +85,10 @@ const Receipt: FunctionComponent<Props> = ({ invoice }) => {
         })
       }
       <Foot>
-        <ColumnLeft colSpan={2}>
+        <ColumnLeft>
             Amount Due
         </ColumnLeft>
-        <ColumnRight colSpan={2}>
+        <ColumnRight>
           <h2>
             <FormattedCurrency currency={invoice.total} />
           </h2>
