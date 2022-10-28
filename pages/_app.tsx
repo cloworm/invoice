@@ -12,8 +12,6 @@ const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   const darkmode = useDarkMode(true)
   const theme = darkmode.value ? darkTheme : lightTheme
   
-  console.log('theme', theme)
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
