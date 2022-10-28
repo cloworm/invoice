@@ -1,5 +1,4 @@
-import { useTheme } from 'next-themes'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import useDarkMode from 'use-dark-mode'

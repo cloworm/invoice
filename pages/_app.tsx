@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { AppProps } from 'next/app'
 import '../styles/globals.css'
 import { InvoiceProvider } from '../state/invoice.state'
