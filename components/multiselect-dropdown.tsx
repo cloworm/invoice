@@ -32,7 +32,7 @@ const OptionContainer = styled.div`
   position: absolute;
   top: 45px;
   left: -20px;
-  background: #252945;
+  background: ${props => props.theme.dropdownBg};
   border-radius: 8px;
   padding: 24px;
   z-index: 2;
@@ -47,7 +47,7 @@ const Input = styled.input`
   appearance: none;
   border: 1px solid transparent;
   border-radius: 2px;
-  background-color: #1E2139;
+  background-color: ${props => props.theme.checkboxBg};
 
   &:checked {
     border: 1px solid #7C5DFA;

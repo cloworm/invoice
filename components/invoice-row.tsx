@@ -10,7 +10,7 @@ const Row = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4px;
   align-items: center;
-  background-color: #1E2139;
+  background-color: ${props => props.theme.cardBg};
   padding: 0 28px;
   height: 72px;
   border-radius: 8px;
@@ -74,7 +74,7 @@ const InvoiceRow: FunctionComponent<Props> = ({
           <StatusBadge status={status} />
         </div>
         <div>
-          <Image src="/icon-arrow-right.svg" alt="Arrow Right" width={4} height={8} />
+          <Image src="/icon-arrow-right.svg" alt="Arrow Right" width={4} height={8} layout="fixed" />
         </div>
       </Row>
     </Link>

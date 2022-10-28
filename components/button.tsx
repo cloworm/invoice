@@ -40,22 +40,22 @@ const PrimaryButton = styled(ButtonBase)`
 `
 
 const SecondaryButton = styled(ButtonBase)`
-  background-color: #252945;
-  color: #DFE3FA;
+  background-color: ${props => props.theme.secondaryButtonBg};
+  color: ${props => props.theme.secondaryButtonColor};
 
   &:hover {
-    background-color: #FFF;
-    color: #DFE3FA;
+    background-color: ${props => props.theme.secondaryButtonBgHover};
+    color: ${props => props.theme.secondaryButtonColorHover};
   }
 `
 
 const TertiaryButton = styled(ButtonBase)`
-  background-color: #373B53;
-  color: #DFE3FA;
+  background-color: ${props => props.theme.tertiaryButtonBg};
+  color: ${props => props.theme.tertiaryButtonColor};
 
   &:hover {
-    background-color: #1E2139;
-    color: #DFE3FA;
+    background-color: ${props => props.theme.tertiaryButtonBgHover};
+    color: ${props => props.theme.tertiaryButtonColorHover};
   }
 `
 

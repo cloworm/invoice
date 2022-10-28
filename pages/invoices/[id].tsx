@@ -9,7 +9,7 @@ import Receipt from '@/components/receipt'
 import Back from '@/components/back'
 
 const Header = styled.div`
-  background-color: #1E2139;
+  background-color: ${props => props.theme.cardBg};
   padding: 20px 32px;
   display: flex;
   align-items: center;
@@ -33,7 +33,7 @@ const StatusLabel = styled.p`
 `
 
 const Details = styled.div`
-  background-color: #1E2139;
+  background-color: ${props => props.theme.cardBg};
   padding: 48px;
   border-radius: 8px;
 `
@@ -95,7 +95,7 @@ const Invoice: FunctionComponent = () => {
           <StatusBadge status={invoice.status} />
         </FlexItemsCenter>
         <ButtonsContainer>
-          <Button variant="tertiary" label="Edit" />
+          <Button variant="secondary" label="Edit" />
           <Button variant="error" label="Delete" />
           <Button variant="primary" label="Mark as Paid" />
         </ButtonsContainer>
