@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
+import Toggle from '@/components/toggle'
 
 const ToolbarContainer = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const ToolbarContainer = styled.div`
   left: 0;
   top: 0;
   width: 103px;
-  background-color: #1E2139;
+  background-color: ${props => props.theme.toolbarBg};
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 `
@@ -55,7 +56,7 @@ const Toolbar: FunctionComponent = () => {
       </LogoContainer>
       <div>
         <ToggleContainer>
-          <Image src="/icon-sun.svg" alt="Arrow Right" width={20} height={20} />
+          <Toggle />
         </ToggleContainer>
         <AvatarContainer>
           <Avatar>

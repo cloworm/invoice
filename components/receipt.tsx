@@ -11,7 +11,7 @@ const Table = styled.div`
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
-  background-color: #252945;
+  background-color: ${props => props.theme.receiptBg};
 `
 
 const Row = styled.div`
@@ -32,21 +32,22 @@ const ColumnCenter = styled.div`
   text-align: center;
 `
 
-const Head = styled(Row)`
+const TableHeaderRow = styled(Row)`
   padding: 32px;
 `
 
-const Foot = styled(Row)`
-  background-color: #0C0E16;
+const TotalRow = styled(Row)`
+  background-color: ${props => props.theme.receiptTotalBg};
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 32px;
+  color: #fff;
 `
 
 const Receipt: FunctionComponent<Props> = ({ invoice }) => {
   return (
     <Table>
-      <Head>
+      <TableHeaderRow>
         <ColumnLeft>
           <p><small>Item Name</small></p>
         </ColumnLeft>
@@ -59,7 +60,7 @@ const Receipt: FunctionComponent<Props> = ({ invoice }) => {
         <ColumnRight>
           <p><small>Total</small></p>
         </ColumnRight>
-      </Head>
+      </TableHeaderRow>
       {
         invoice.items.map((item) => {
           return (
@@ -84,7 +85,7 @@ const Receipt: FunctionComponent<Props> = ({ invoice }) => {
           )
         })
       }
-      <Foot>
+      <TotalRow>
         <ColumnLeft>
             Amount Due
         </ColumnLeft>
@@ -93,7 +94,7 @@ const Receipt: FunctionComponent<Props> = ({ invoice }) => {
             <FormattedCurrency currency={invoice.total} />
           </h2>
         </ColumnRight>
-      </Foot>
+      </TotalRow>
     </Table>
   )
 }
